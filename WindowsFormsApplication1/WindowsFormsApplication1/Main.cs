@@ -253,6 +253,8 @@ namespace WindowsFormsApplication1
             if (this.fontDialog.ShowDialog() == DialogResult.OK) {
                 this.inputBox.Font = this.fontDialog.Font;
                 this.passage.Font = this.fontDialog.Font;
+                Console.WriteLine(this.fontDialog.Font);
+                
             }
         }
     }

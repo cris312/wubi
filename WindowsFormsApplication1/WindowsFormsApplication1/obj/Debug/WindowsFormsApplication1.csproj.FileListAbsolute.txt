@@ -10,4 +10,3 @@ C:\Users\wk\Desktop\test2\WindowsFormsApplication1\WindowsFormsApplication1\obj\
 C:\Users\wk\Desktop\test2\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.SelectPassage.resources
 C:\Users\wk\Desktop\test2\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.SetTime.resources
 C:\Users\wk\Desktop\test2\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Record.resources
-C:\Users\wk\Desktop\test2\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Set.resources
