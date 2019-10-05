@@ -79,21 +79,6 @@ namespace WindowsFormsApplication1
                 } 
             }
         }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
-        }
         //文本输入
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -146,16 +131,7 @@ namespace WindowsFormsApplication1
             accuracyShow.Text = accRate.ToString("f2") + "%";
             reviseShow.Text = changeRate.ToString("f2") + "%";
         }
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        //开始按扭，
+        //开始按扭
         private void startBt_Click(object sender, EventArgs e)
         {
             inputBox.Focus();
@@ -175,11 +151,6 @@ namespace WindowsFormsApplication1
                 startBt.Text = "开始";
                 inputBox.ReadOnly = true;
             }  
-        }
-
-        private void countDownTime_TextChanged(object sender, EventArgs e)
-        {
-            
         }
         //停止
         private void button2_Click(object sender, EventArgs e)
@@ -210,10 +181,6 @@ namespace WindowsFormsApplication1
             sw.Flush();
             sw.Close();
             sw.Dispose();
-        }
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            
         }
         //设置时间
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
@@ -268,26 +235,6 @@ namespace WindowsFormsApplication1
                 t += currSec.ToString();
             }
             countDownTime.Text = t;
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void speedLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void accLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void speed_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)

@@ -90,7 +90,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.button2);
             this.splitContainer1.Panel2.Controls.Add(this.startBt);
             this.splitContainer1.Panel2.Controls.Add(this.countDownTime);
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(1806, 1055);
             this.splitContainer1.SplitterDistance = 1285;
             this.splitContainer1.TabIndex = 2;
@@ -127,7 +126,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 211);
             this.tableLayoutPanel1.TabIndex = 7;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // speedShow
             // 
@@ -136,7 +134,6 @@
             this.speedShow.ReadOnly = true;
             this.speedShow.Size = new System.Drawing.Size(213, 28);
             this.speedShow.TabIndex = 0;
-            this.speedShow.TextChanged += new System.EventHandler(this.speed_TextChanged);
             // 
             // accuracyShow
             // 
@@ -162,7 +159,6 @@
             this.speedLabel.Size = new System.Drawing.Size(44, 18);
             this.speedLabel.TabIndex = 3;
             this.speedLabel.Text = "速度";
-            this.speedLabel.Click += new System.EventHandler(this.speedLabel_Click);
             // 
             // accLabel
             // 
@@ -172,7 +168,6 @@
             this.accLabel.Size = new System.Drawing.Size(62, 18);
             this.accLabel.TabIndex = 4;
             this.accLabel.Text = "准确率";
-            this.accLabel.Click += new System.EventHandler(this.accLabel_Click);
             // 
             // reviseLabel
             // 
@@ -212,7 +207,7 @@
             this.countDownTime.Size = new System.Drawing.Size(390, 67);
             this.countDownTime.TabIndex = 3;
             this.countDownTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.countDownTime.TextChanged += new System.EventHandler(this.countDownTime_TextChanged);
+            
             // 
             // menuStrip1
             // 
@@ -226,7 +221,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1904, 39);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // toolStripMenuItem1
             // 
@@ -235,7 +229,6 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(74, 35);
             this.toolStripMenuItem1.Text = "文件";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem5
             // 
