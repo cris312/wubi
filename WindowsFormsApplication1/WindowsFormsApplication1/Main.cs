@@ -133,6 +133,7 @@ namespace WindowsFormsApplication1
             Console.WriteLine(timer1.ToString());
             show();
         }
+        //显示各项指标
         private void show() {
             try {
                 accRate = 100 * (correct * 1.0 / input);
