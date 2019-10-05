@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
             int itemNum = 5,currL = 0;
             string title = "时期\t\t用时\t速度\t准确率\t修改率";
             gradeRecord.Items.Add(title);
-            string path = @"C:/Users/wk/Desktop/test2/WindowsFormsApplication1/WindowsFormsApplication1/grade.txt";
+            string path = Directory.GetCurrentDirectory() + "/grade.txt";
             using (StreamReader sr = new StreamReader(path))
             {
                 string ssLine = "", line;

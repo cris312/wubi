@@ -66,7 +66,7 @@ namespace WindowsFormsApplication1
         private void textBox2_TextChanged_1(object sender, EventArgs e)
         {
             if (fName != "-1") { 
-                string path = @"C:/Users/wk/Desktop/test2/WindowsFormsApplication1/WindowsFormsApplication1/files/" + fName;
+                string path = Directory.GetCurrentDirectory() + "/files/" + fName;
                 using (StreamReader sr = new StreamReader(path))
                 {
                     string ssLine = "",line;
@@ -135,6 +135,7 @@ namespace WindowsFormsApplication1
         private void startBt_Click(object sender, EventArgs e)
         {
             inputBox.Focus();
+            currMin = sumMin = Time;
             if (startBt.Text == "开始")
             {
                 if (fName == "-1")
@@ -175,7 +176,7 @@ namespace WindowsFormsApplication1
             record += ('\n' + speed.ToString("f2"));
             record += ('\n' + accRate.ToString("f2"));
             record += ('\n' + changeRate.ToString("f2") + '\n');
-            string recordFile = @"C:/Users/wk/Desktop/test2/WindowsFormsApplication1/WindowsFormsApplication1/grade.txt";
+            string recordFile = Directory.GetCurrentDirectory() + "/grade.txt";
             StreamWriter sw = File.AppendText(recordFile);
             sw.Write(record);
             sw.Flush();
@@ -187,7 +188,6 @@ namespace WindowsFormsApplication1
         {
             SetTime setTime = new SetTime(this);
             setTime.Show();
-            Console.WriteLine(sumMin.ToString());
         } 
         //选择试题
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
@@ -246,6 +246,14 @@ namespace WindowsFormsApplication1
         {
             Record r = new Record();
             r.Show();
+        }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            if (this.fontDialog.ShowDialog() == DialogResult.OK) {
+                this.inputBox.Font = this.fontDialog.Font;
+                this.passage.Font = this.fontDialog.Font;
+            }
         }
     }
 }

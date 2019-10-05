@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.inputBox = new MyTextBox();
+            this.inputBox = new WindowsFormsApplication1.Main.MyTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.passage = new System.Windows.Forms.TextBox();
+            this.index = new System.Windows.Forms.Label();
+            this.restTime = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.speedShow = new System.Windows.Forms.TextBox();
             this.accuracyShow = new System.Windows.Forms.TextBox();
@@ -51,8 +53,10 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.restTime = new System.Windows.Forms.Label();
-            this.index = new System.Windows.Forms.Label();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.setItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.fontDialog = new System.Windows.Forms.FontDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -63,7 +67,7 @@
             // 
             // inputBox
             // 
-            this.inputBox.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.inputBox.Font = new System.Drawing.Font("宋体", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.inputBox.Location = new System.Drawing.Point(29, 568);
             this.inputBox.Multiline = true;
             this.inputBox.Name = "inputBox";
@@ -96,7 +100,8 @@
             // 
             // passage
             // 
-            this.passage.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.passage.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.passage.Font = new System.Drawing.Font("宋体", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.passage.Location = new System.Drawing.Point(29, 63);
             this.passage.Multiline = true;
             this.passage.Name = "passage";
@@ -105,6 +110,26 @@
             this.passage.Size = new System.Drawing.Size(1200, 450);
             this.passage.TabIndex = 1;
             this.passage.TextChanged += new System.EventHandler(this.textBox2_TextChanged_1);
+            // 
+            // index
+            // 
+            this.index.AutoSize = true;
+            this.index.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.index.Location = new System.Drawing.Point(190, 42);
+            this.index.Name = "index";
+            this.index.Size = new System.Drawing.Size(124, 28);
+            this.index.TabIndex = 9;
+            this.index.Text = "实时指标";
+            // 
+            // restTime
+            // 
+            this.restTime.AutoSize = true;
+            this.restTime.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.restTime.Location = new System.Drawing.Point(207, 744);
+            this.restTime.Name = "restTime";
+            this.restTime.Size = new System.Drawing.Size(124, 28);
+            this.restTime.TabIndex = 8;
+            this.restTime.Text = "剩余时间";
             // 
             // tableLayoutPanel1
             // 
@@ -207,7 +232,6 @@
             this.countDownTime.Size = new System.Drawing.Size(390, 67);
             this.countDownTime.TabIndex = 3;
             this.countDownTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            
             // 
             // menuStrip1
             // 
@@ -225,6 +249,8 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setItem,
+            this.toolStripSeparator2,
             this.toolStripMenuItem5});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(74, 35);
@@ -233,7 +259,7 @@
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(136, 36);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(184, 36);
             this.toolStripMenuItem5.Text = "退出";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
@@ -241,6 +267,7 @@
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem6,
+            this.toolStripSeparator1,
             this.toolStripMenuItem7});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(74, 35);
@@ -280,25 +307,22 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // restTime
+            // toolStripSeparator1
             // 
-            this.restTime.AutoSize = true;
-            this.restTime.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.restTime.Location = new System.Drawing.Point(207, 744);
-            this.restTime.Name = "restTime";
-            this.restTime.Size = new System.Drawing.Size(124, 28);
-            this.restTime.TabIndex = 8;
-            this.restTime.Text = "剩余时间";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
             // 
-            // index
+            // setItem
             // 
-            this.index.AutoSize = true;
-            this.index.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.index.Location = new System.Drawing.Point(190, 42);
-            this.index.Name = "index";
-            this.index.Size = new System.Drawing.Size(124, 28);
-            this.index.TabIndex = 9;
-            this.index.Text = "实时指标";
+            this.setItem.Name = "setItem";
+            this.setItem.Size = new System.Drawing.Size(184, 36);
+            this.setItem.Text = "设置字体";
+            this.setItem.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(181, 6);
             // 
             // Main
             // 
@@ -359,6 +383,10 @@
         private System.Windows.Forms.Label reviseLabel;
         private System.Windows.Forms.Label index;
         private System.Windows.Forms.Label restTime;
+        private System.Windows.Forms.ToolStripMenuItem setItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.FontDialog fontDialog;
 
     }
 }

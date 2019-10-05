@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            string rootPath = @"C:/Users/wk/Desktop/test2/WindowsFormsApplication1/WindowsFormsApplication1/files";
+            string rootPath = Directory.GetCurrentDirectory() + "/files";
             DirectoryInfo folder = new DirectoryInfo(rootPath);
             foreach (FileInfo file in folder.GetFiles())
                 listBox1.Items.Add(file.Name);
