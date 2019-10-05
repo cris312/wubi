@@ -155,7 +155,7 @@ namespace WindowsFormsApplication1
         {
 
         }
-
+        //开始按扭
         private void startBt_Click(object sender, EventArgs e)
         {
             inputBox.Focus();
