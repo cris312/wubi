@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.inputBox = new WindowsFormsApplication1.Main.MyTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.passage = new System.Windows.Forms.TextBox();
+            this.speedChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.index = new System.Windows.Forms.Label();
             this.restTime = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -46,21 +50,22 @@
             this.countDownTime = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.setItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.setItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.fontDialog = new System.Windows.Forms.FontDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.speedChart)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +93,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.speedChart);
             this.splitContainer1.Panel2.Controls.Add(this.index);
             this.splitContainer1.Panel2.Controls.Add(this.restTime);
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
@@ -110,6 +116,22 @@
             this.passage.Size = new System.Drawing.Size(1200, 450);
             this.passage.TabIndex = 1;
             this.passage.TextChanged += new System.EventHandler(this.textBox2_TextChanged_1);
+            // 
+            // speedChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.speedChart.ChartAreas.Add(chartArea1);
+            //legend1.Name = "Legend1";
+            //this.speedChart.Legends.Add(legend1);
+            this.speedChart.Location = new System.Drawing.Point(58, 391);
+            this.speedChart.Name = "speedChart";
+            series1.ChartArea = "ChartArea1";
+            //series1.Legend = "Legend1";
+            //series1.Name = "Series1";
+            this.speedChart.Series.Add(series1);
+            this.speedChart.Size = new System.Drawing.Size(411, 300);
+            this.speedChart.TabIndex = 10;
+            this.speedChart.Text = "chart1";
             // 
             // index
             // 
@@ -256,6 +278,18 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(74, 35);
             this.toolStripMenuItem1.Text = "文件";
             // 
+            // setItem
+            // 
+            this.setItem.Name = "setItem";
+            this.setItem.Size = new System.Drawing.Size(184, 36);
+            this.setItem.Text = "设置字体";
+            this.setItem.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(181, 6);
+            // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
@@ -280,6 +314,11 @@
             this.toolStripMenuItem6.Text = "设置时间";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
+            // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
@@ -298,7 +337,7 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 36);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(136, 36);
             this.toolStripMenuItem3.Text = "成绩";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
@@ -306,23 +345,6 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
-            // 
-            // setItem
-            // 
-            this.setItem.Name = "setItem";
-            this.setItem.Size = new System.Drawing.Size(184, 36);
-            this.setItem.Text = "设置字体";
-            this.setItem.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(181, 6);
             // 
             // Main
             // 
@@ -339,6 +361,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.speedChart)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -387,6 +410,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.FontDialog fontDialog;
+        private System.Windows.Forms.DataVisualization.Charting.Chart speedChart;
 
     }
 }

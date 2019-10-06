@@ -43,6 +43,7 @@ namespace WindowsFormsApplication1
         private double speed = 0;
         private double accRate = 0;
         private double changeRate = 0;
+        private Queue<double> dataQueue = new Queue<double>(50);
         public string FName
         {
             get
@@ -61,6 +62,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             inputBox.ReadOnly = true;
             this.WindowState = FormWindowState.Maximized;
+            initChart();
         }
         //文本页面
         private void textBox2_TextChanged_1(object sender, EventArgs e)
@@ -195,7 +197,7 @@ namespace WindowsFormsApplication1
             SelectPassage f2 = new SelectPassage(this);
             f2.Show();
         }
-
+        //计时器
         private void timer1_Tick(object sender, EventArgs e)
         {
             sumSec++;
@@ -235,6 +237,8 @@ namespace WindowsFormsApplication1
                 t += currSec.ToString();
             }
             countDownTime.Text = t;
+            update_value(); 
+            this.speedChart.Series[0].Points.AddXY(sumSec - 1, dataQueue.ElementAt(sumSec - 1));
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
@@ -253,9 +257,19 @@ namespace WindowsFormsApplication1
             if (this.fontDialog.ShowDialog() == DialogResult.OK) {
                 this.inputBox.Font = this.fontDialog.Font;
                 this.passage.Font = this.fontDialog.Font;
-                Console.WriteLine(this.fontDialog.Font);
                 
             }
+        }
+        private void update_value()
+        {
+            if (dataQueue.Count > 50)
+                dataQueue.Dequeue();
+            dataQueue.Enqueue(speed);
+        }
+        private void initChart()
+        {
+            this.speedChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            this.speedChart.Titles.Clear();
         }
     }
 }
