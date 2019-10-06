@@ -237,21 +237,23 @@ namespace WindowsFormsApplication1
                 t += currSec.ToString();
             }
             countDownTime.Text = t;
-            update_value(); 
-            this.speedChart.Series[0].Points.AddXY(sumSec - 1, dataQueue.ElementAt(sumSec - 1));
+            //更新队列数据实时画图
+            update_value();
+            int QTail = sumSec >= 50 ? 50 : sumSec;
+            this.speedChart.Series[0].Points.AddXY(sumSec - 1, dataQueue.ElementAt(QTail - 1));
         }
-
+        //退出菜单按钮
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        //显示成绩按钮
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             Record r = new Record();
             r.Show();
         }
-
+        //设置字体按钮
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
             if (this.fontDialog.ShowDialog() == DialogResult.OK) {
@@ -260,12 +262,14 @@ namespace WindowsFormsApplication1
                 
             }
         }
+        //更新图表队列数据
         private void update_value()
         {
             if (dataQueue.Count > 50)
                 dataQueue.Dequeue();
             dataQueue.Enqueue(speed);
         }
+        //初始化图表
         private void initChart()
         {
             this.speedChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
