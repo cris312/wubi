@@ -63,6 +63,42 @@ namespace WindowsFormsApplication1
             inputBox.ReadOnly = true;
             this.WindowState = FormWindowState.Maximized;
             initChart();
+            loadConfig();
+            InputLanguageCollection langs = InputLanguage.InstalledInputLanguages;
+            foreach (InputLanguage lang in langs)
+            {
+                if (lang.LayoutName == "中文(简体，中国)微软拼音")
+                {
+                    InputLanguage.CurrentInputLanguage = lang;
+                }
+            }
+        }
+        //载入配置文件
+        private void loadConfig()
+        {
+            string ssLine;
+            ssLine = getConfigWithName("TIME");
+            int time = Convert.ToInt32(ssLine);
+            currMin = sumMin = time;
+
+        }
+        private string getConfigWithName(string name)
+        {
+            string path = Directory.GetCurrentDirectory() + "/config.cfg";
+            string cfg = "";
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string line;
+                // 从文件读取并显示行，直到文件的末尾 
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Substring(0, line.IndexOf("=")) == name)
+                    {
+                        cfg = line.Substring(line.IndexOf("=") + 1); 
+                    }
+                }
+            }
+            return cfg;
         }
         //文本页面
         private void textBox2_TextChanged_1(object sender, EventArgs e)
@@ -84,19 +120,24 @@ namespace WindowsFormsApplication1
         //文本输入
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
             //passage.Focus();
             passage.Select(0,input);
             passage.ScrollToCaret();
             inputBox.Focus();
+            string ans = "", userAns = "";
             if (inputBox.TextLength > input)
             {
                 sum++;
                 input = inputBox.TextLength;
-                int start = input > 0 ? input - 1 : 0;
-                string ans = passage.Text.Substring(start, 1);
-                string userAns = inputBox.Text.Substring(start, 1);
-                Console.WriteLine(ans + "," + userAns);
+                if (input > 0)
+                {
+                    ans = passage.Text.Substring(input - 1, 1);
+                    userAns = inputBox.Text.Substring(input - 1, 1);
+                }
+                else
+                {
+                    ans = userAns = "";
+                }
                 if (ans == userAns)
                 {
                     correct++;
@@ -109,20 +150,35 @@ namespace WindowsFormsApplication1
                 }
             }
             else {
+
                 input = inputBox.TextLength;
                 change++;
                 if (last)
                     correct--;
                 else
                     error--;
-            
+                if (input > 0)
+                {
+                    ans = passage.Text.Substring(input - 1, 1);
+                    userAns = inputBox.Text.Substring(input - 1, 1);
+                }
+                else
+                {
+                    ans = userAns = "";
+                }
+                
+                if (ans == userAns)
+                    last = true;
+                else
+                    last = false;
             }
-            Console.WriteLine(timer1.ToString());
             show();
         }
         //显示各项指标
         private void show() {
             try {
+                Console.WriteLine(correct);
+                Console.WriteLine(input);
                 accRate = 100 * (correct * 1.0 / input);
                 changeRate = 100 * (change * 1.0 / sum);
             }
@@ -158,23 +214,36 @@ namespace WindowsFormsApplication1
         //停止
         private void button2_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
-            inputBox.ReadOnly = true;
-            currSec = currMin = 0;
-            fName = "-1";
-            startBt.Text = "开始";
-            writeRecord();
+            if (sumSec == 0)
+            {
+                MessageBox.Show("还没开始，请不要放弃");
+            }
+            else
+            { 
+                timer1.Stop();
+                inputBox.ReadOnly = true;
+                currSec = currMin = 0;
+                fName = "-1";
+                startBt.Text = "开始";
+                writeRecord();
+            }
         }
         //记录成绩
         private void writeRecord()
         {
             //时期，用时，速度，准确率，修改率
             int time = sumSec / 60;
+            bool flag = false; //是否超过1分钟
             string record = DateTime.Now.ToString("yyyy-MM-dd");
-            if(time > 0)
+            if (time > 0)
+            { 
                 record += ('\n' + time.ToString() + '分');
+                flag = true;
+            }
+            if (!flag)
+                record += '\n';
             time = sumSec - time * 60;
-            record += ('\n' + time.ToString() + '秒');
+            record += (time.ToString() + '秒');
             record += ('\n' + speed.ToString("f2"));
             record += ('\n' + accRate.ToString("f2"));
             record += ('\n' + changeRate.ToString("f2") + '\n');
@@ -195,6 +264,8 @@ namespace WindowsFormsApplication1
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
             SelectPassage f2 = new SelectPassage(this);
+            passage.Clear();
+            inputBox.Clear();
             f2.Show();
         }
         //计时器

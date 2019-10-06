@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.inputBox = new WindowsFormsApplication1.Main.MyTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -61,6 +60,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.fontDialog = new System.Windows.Forms.FontDialog();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -83,7 +83,7 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(43, 117);
+            this.splitContainer1.Location = new System.Drawing.Point(41, 68);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -93,6 +93,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.speedChart);
             this.splitContainer1.Panel2.Controls.Add(this.index);
             this.splitContainer1.Panel2.Controls.Add(this.restTime);
@@ -121,13 +122,10 @@
             // 
             chartArea1.Name = "ChartArea1";
             this.speedChart.ChartAreas.Add(chartArea1);
-            //legend1.Name = "Legend1";
-            //this.speedChart.Legends.Add(legend1);
             this.speedChart.Location = new System.Drawing.Point(58, 391);
             this.speedChart.Name = "speedChart";
             series1.ChartArea = "ChartArea1";
-            //series1.Legend = "Legend1";
-            //series1.Name = "Series1";
+            series1.Name = "Series1";
             this.speedChart.Series.Add(series1);
             this.speedChart.Size = new System.Drawing.Size(411, 300);
             this.speedChart.TabIndex = 10;
@@ -136,20 +134,20 @@
             // index
             // 
             this.index.AutoSize = true;
-            this.index.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.index.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.index.Location = new System.Drawing.Point(190, 42);
             this.index.Name = "index";
-            this.index.Size = new System.Drawing.Size(124, 28);
+            this.index.Size = new System.Drawing.Size(127, 36);
             this.index.TabIndex = 9;
             this.index.Text = "实时指标";
             // 
             // restTime
             // 
             this.restTime.AutoSize = true;
-            this.restTime.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.restTime.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.restTime.Location = new System.Drawing.Point(207, 744);
             this.restTime.Name = "restTime";
-            this.restTime.Size = new System.Drawing.Size(124, 28);
+            this.restTime.Size = new System.Drawing.Size(127, 36);
             this.restTime.TabIndex = 8;
             this.restTime.Text = "剩余时间";
             // 
@@ -227,6 +225,7 @@
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button2.Location = new System.Drawing.Point(284, 933);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(114, 59);
@@ -237,6 +236,7 @@
             // 
             // startBt
             // 
+            this.startBt.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.startBt.Location = new System.Drawing.Point(128, 934);
             this.startBt.Name = "startBt";
             this.startBt.Size = new System.Drawing.Size(114, 59);
@@ -337,7 +337,7 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(136, 36);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 36);
             this.toolStripMenuItem3.Text = "成绩";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
@@ -346,15 +346,25 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(204, 348);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 31);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "实时速率";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1222);
+            this.ClientSize = new System.Drawing.Size(1904, 1169);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "我爱五笔";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -384,7 +394,6 @@
         }
         private MyTextBox inputBox;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox passage;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
@@ -411,6 +420,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.FontDialog fontDialog;
         private System.Windows.Forms.DataVisualization.Charting.Chart speedChart;
+        public System.Windows.Forms.TextBox passage;
+        private System.Windows.Forms.Label label1;
 
     }
 }
