@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.inputBox = new WindowsFormsApplication1.Main.MyTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.passage = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.speedChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.index = new System.Windows.Forms.Label();
             this.restTime = new System.Windows.Forms.Label();
@@ -60,7 +61,8 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.fontDialog = new System.Windows.Forms.FontDialog();
-            this.label1 = new System.Windows.Forms.Label();
+            this.processLabel = new System.Windows.Forms.Label();
+            this.processBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -118,15 +120,25 @@
             this.passage.TabIndex = 1;
             this.passage.TextChanged += new System.EventHandler(this.textBox2_TextChanged_1);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(204, 348);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 31);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "实时速率";
+            // 
             // speedChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.speedChart.ChartAreas.Add(chartArea1);
+            chartArea5.Name = "ChartArea1";
+            this.speedChart.ChartAreas.Add(chartArea5);
             this.speedChart.Location = new System.Drawing.Point(58, 391);
             this.speedChart.Name = "speedChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Name = "Series1";
-            this.speedChart.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.Name = "Series1";
+            this.speedChart.Series.Add(series5);
             this.speedChart.Size = new System.Drawing.Size(411, 300);
             this.speedChart.TabIndex = 10;
             this.speedChart.Text = "chart1";
@@ -135,7 +147,7 @@
             // 
             this.index.AutoSize = true;
             this.index.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.index.Location = new System.Drawing.Point(190, 42);
+            this.index.Location = new System.Drawing.Point(187, 21);
             this.index.Name = "index";
             this.index.Size = new System.Drawing.Size(127, 36);
             this.index.TabIndex = 9;
@@ -163,13 +175,16 @@
             this.tableLayoutPanel1.Controls.Add(this.speedLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.accLabel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.reviseLabel, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(58, 91);
+            this.tableLayoutPanel1.Controls.Add(this.processLabel, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.processBox, 1, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(58, 73);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 211);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 240);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // speedShow
@@ -182,7 +197,7 @@
             // 
             // accuracyShow
             // 
-            this.accuracyShow.Location = new System.Drawing.Point(126, 71);
+            this.accuracyShow.Location = new System.Drawing.Point(126, 66);
             this.accuracyShow.Name = "accuracyShow";
             this.accuracyShow.ReadOnly = true;
             this.accuracyShow.Size = new System.Drawing.Size(213, 28);
@@ -190,7 +205,7 @@
             // 
             // reviseShow
             // 
-            this.reviseShow.Location = new System.Drawing.Point(126, 139);
+            this.reviseShow.Location = new System.Drawing.Point(126, 129);
             this.reviseShow.Name = "reviseShow";
             this.reviseShow.ReadOnly = true;
             this.reviseShow.Size = new System.Drawing.Size(213, 28);
@@ -208,7 +223,7 @@
             // accLabel
             // 
             this.accLabel.AutoSize = true;
-            this.accLabel.Location = new System.Drawing.Point(3, 68);
+            this.accLabel.Location = new System.Drawing.Point(3, 63);
             this.accLabel.Name = "accLabel";
             this.accLabel.Size = new System.Drawing.Size(62, 18);
             this.accLabel.TabIndex = 4;
@@ -217,7 +232,7 @@
             // reviseLabel
             // 
             this.reviseLabel.AutoSize = true;
-            this.reviseLabel.Location = new System.Drawing.Point(3, 136);
+            this.reviseLabel.Location = new System.Drawing.Point(3, 126);
             this.reviseLabel.Name = "reviseLabel";
             this.reviseLabel.Size = new System.Drawing.Size(62, 18);
             this.reviseLabel.TabIndex = 5;
@@ -337,7 +352,7 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 36);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(136, 36);
             this.toolStripMenuItem3.Text = "成绩";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
@@ -346,15 +361,22 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label1
+            // processLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(204, 348);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 31);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "实时速率";
+            this.processLabel.AutoSize = true;
+            this.processLabel.Location = new System.Drawing.Point(3, 183);
+            this.processLabel.Name = "processLabel";
+            this.processLabel.Size = new System.Drawing.Size(44, 18);
+            this.processLabel.TabIndex = 6;
+            this.processLabel.Text = "进度";
+            // 
+            // processBox
+            // 
+            this.processBox.Location = new System.Drawing.Point(126, 186);
+            this.processBox.Name = "processBox";
+            this.processBox.ReadOnly = true;
+            this.processBox.Size = new System.Drawing.Size(214, 28);
+            this.processBox.TabIndex = 7;
             // 
             // Main
             // 
@@ -422,6 +444,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart speedChart;
         public System.Windows.Forms.TextBox passage;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label processLabel;
+        private System.Windows.Forms.TextBox processBox;
 
     }
 }

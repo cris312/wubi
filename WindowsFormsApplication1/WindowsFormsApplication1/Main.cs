@@ -173,21 +173,20 @@ namespace WindowsFormsApplication1
                     last = false;
             }
             show();
+            //打完了
+            if (inputBox.TextLength >= passage.TextLength)
+                stop();
         }
         //显示各项指标
         private void show() {
-            try {
-                Console.WriteLine(correct);
-                Console.WriteLine(input);
+            if (input == 0)
+                accRate = 0.00;
+            else
                 accRate = 100 * (correct * 1.0 / input);
-                changeRate = 100 * (change * 1.0 / sum);
-            }
-            catch(DivideByZeroException){
-                accRate = 0;
-                changeRate = 0;
-            }
+            changeRate = 100 * (change * 1.0 / sum);
             accuracyShow.Text = accRate.ToString("f2") + "%";
             reviseShow.Text = changeRate.ToString("f2") + "%";
+            processBox.Text = input.ToString() + "/" + passage.TextLength.ToString();
         }
         //开始按扭
         private void startBt_Click(object sender, EventArgs e)
@@ -219,14 +218,18 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("还没开始，请不要放弃");
             }
             else
-            { 
-                timer1.Stop();
-                inputBox.ReadOnly = true;
-                currSec = currMin = 0;
-                fName = "-1";
-                startBt.Text = "开始";
-                writeRecord();
+            {
+                stop();
             }
+        }
+        private void stop()
+        {
+            timer1.Stop();
+            inputBox.ReadOnly = true;
+            currSec = currMin = 0;
+            fName = "-1";
+            startBt.Text = "开始";
+            writeRecord();
         }
         //记录成绩
         private void writeRecord()
