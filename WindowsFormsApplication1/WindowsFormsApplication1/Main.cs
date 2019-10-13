@@ -117,6 +117,21 @@ namespace WindowsFormsApplication1
                 } 
             }
         }
+        //计算正确字的个数
+        private void cal()
+        {
+            string ans = passage.Text;
+            string userAns = inputBox.Text;
+            correct = 0;
+            error = 0;
+            for (int i = 0; i < userAns.Length; i++)
+            {
+                if (ans[i] == userAns[i])
+                    correct++;
+                else
+                    error++;
+            }
+        }
         //文本输入
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -124,54 +139,16 @@ namespace WindowsFormsApplication1
             passage.Select(0,input);
             passage.ScrollToCaret();
             inputBox.Focus();
-            string ans = "", userAns = "";
             if (inputBox.TextLength > input)
             {
                 sum++;
                 input = inputBox.TextLength;
-                if (input > 0)
-                {
-                    ans = passage.Text.Substring(input - 1, 1);
-                    userAns = inputBox.Text.Substring(input - 1, 1);
-                }
-                else
-                {
-                    ans = userAns = "";
-                }
-                if (ans == userAns)
-                {
-                    correct++;
-                    last = true;
-                }
-                else
-                {
-                    error++;
-                    last = false;
-                }
             }
             else {
-
                 input = inputBox.TextLength;
                 change++;
-                if (last)
-                    correct--;
-                else
-                    error--;
-                if (input > 0)
-                {
-                    ans = passage.Text.Substring(input - 1, 1);
-                    userAns = inputBox.Text.Substring(input - 1, 1);
-                }
-                else
-                {
-                    ans = userAns = "";
-                }
-                
-                if (ans == userAns)
-                    last = true;
-                else
-                    last = false;
             }
+            cal();
             show();
             //打完了
             if (inputBox.TextLength >= passage.TextLength)
@@ -222,14 +199,32 @@ namespace WindowsFormsApplication1
                 stop();
             }
         }
-        private void stop()
+        //初始化所有参数
+        private void init()
         {
-            timer1.Stop();
             inputBox.ReadOnly = true;
-            currSec = currMin = 0;
             fName = "-1";
             startBt.Text = "开始";
             writeRecord();
+            sumMin = 10;
+            sumSec = 0;
+            currSec = 1;
+            currMin = sumMin = 10;
+            input = 0; //输入的字数
+            change = 0; //修改的字数
+            error = 0; //错误的字数
+            correct = 0; //错误的字数
+            sum = 0; //总共输入的字数
+            fName = "-1";
+            speed = 0;
+            accRate = 0;
+            changeRate = 0;
+        
+        }
+        private void stop()
+        {
+            timer1.Stop();
+            init();
         }
         //记录成绩
         private void writeRecord()
@@ -276,6 +271,7 @@ namespace WindowsFormsApplication1
         {
             sumSec++;
             speed = 60 * (correct * 1.0 / sumSec);
+            Console.WriteLine(correct.ToString());
             speedShow.Text = speed.ToString("f2") + "字/分";
             //倒计时
             string t = "";
